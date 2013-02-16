@@ -1,6 +1,6 @@
-### AES and CBC ArrayBuffer
+### Description
 
-This is a JavaScript AES and CBC implementation using ArrayBuffer. Why would you want that you might ask and the reason is that I wanted to do AES CBC crypto in a Chrome extension. I also wanted to make it resonable fast so the code might look a bit weird and it is also only optimized for Chrome v8.
+This is a JavaScript AES and CBC implementation using ArrayBuffer. Why you would want that you might ask and the reason is that I wanted to do AES CBC crypto in a Chrome extension. I also wanted to make it reasonable fast (for being done in JavaScript) so the code might look a bit weird and it is also only optimized to run with Chrome v8.
 
 Note that if you read this in a future when the [WebCrypto standard](http://www.w3.org/2012/webcrypto/WebCryptoAPI/) is available in all browser you need to support I suggest that you use that instead.
 
@@ -38,7 +38,8 @@ var decrypted = Crypto.pkcs_unpad(Crypto.decrypt_aes_cbc(encrypted, key.buffer, 
 // decrypted is now a ArrayBuffer with same bytes as in input
 ```
 
-### Possible improvements
+### Possible improvements and TODOs
 
 Test if inverse equivalent cipher is faster. [crypto-js AES](http://crypto-js.googlecode.com/svn/tags/3.1/src/aes.js) seems to use that but haven't benchmarked their code yet.
 
+I should write a short journal of the optimization steps and tests done to end up with the current code. The short version is: use lookup tables, don't create new objects, unroll and inline functions yourself as the v8 optimizer seem hard to predict and has some default limits that is hard to fulfill.
