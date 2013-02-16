@@ -12,6 +12,9 @@ Encrypt ~12.2 MB/s, Decrypt ~8.4 MB/s
 2011 MacBook Air, Chrome 24, 1.5 GHz Core i5, 1333Mhz DDR3:  
 Encrypt ~17.5 MB/s, Decrypt ~12.0 MB/s
 
+If you want to benchmark yourself you can check the "CBC AES-128 Benchmark" test case in
+the [unit tests](http://wader.github.com/aes-arraybuffer/tests.html).
+
 ### Usage
 
 ```JavaScript
